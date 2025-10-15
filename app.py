@@ -289,18 +289,8 @@ class TravelRecommendationSystem:
             })
 
         return similar_locations
+    
 
-@app.route('/')
-def home():
-    return jsonify({
-        'message': 'Welcome to Travel Recommendation System',
-        'endpoints': {
-            'search_transport': '/api/search_transport',
-            'generate_itinerary': '/api/generate_itinerary',
-            'locations': '/api/locations',
-            'health': '/api/health'
-        }
-    })
 
 # Initialize the recommendation system
 recommendation_system = TravelRecommendationSystem()
@@ -417,5 +407,4 @@ def health_check():
     })
 
 if __name__ == '__main__':
-    port = int(os.environ.get('PORT', 5000))  # dynamic port for Render
-    app.run(debug=True, host='0.0.0.0', port=port)
+    app.run(debug=True, host='0.0.0.0', port=5000)
