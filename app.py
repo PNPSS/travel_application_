@@ -289,6 +289,13 @@ class TravelRecommendationSystem:
             })
 
         return similar_locations
+    
+@app.route('/')
+def home():
+    return "Hello! Your Flask app is working 🚀"
+
+if __name__ == '__main__':
+    app.run()
 
 # Initialize the recommendation system
 recommendation_system = TravelRecommendationSystem()
