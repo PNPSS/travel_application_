@@ -289,15 +289,18 @@ class TravelRecommendationSystem:
             })
 
         return similar_locations
-    
+
 @app.route('/')
 def home():
-    return "Hello! Your Flask app is running 🚀"
-
-if __name__ == '__main__':
-    # For local dev fallback: use PORT env var if set, otherwise 5000
-    port = int(os.environ.get('PORT', 5000))
-    app.run(host='0.0.0.0', port=port)
+    return jsonify({
+        'message': 'Welcome to Travel Recommendation System',
+        'endpoints': {
+            'search_transport': '/api/search_transport',
+            'generate_itinerary': '/api/generate_itinerary',
+            'locations': '/api/locations',
+            'health': '/api/health'
+        }
+    })
 
 # Initialize the recommendation system
 recommendation_system = TravelRecommendationSystem()
@@ -414,4 +417,5 @@ def health_check():
     })
 
 if __name__ == '__main__':
-    app.run(debug=True, host='0.0.0.0', port=5000)
+    port = int(os.environ.get('PORT', 5000))  # dynamic port for Render
+    app.run(debug=True, host='0.0.0.0', port=port)
