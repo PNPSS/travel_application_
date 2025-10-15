@@ -292,10 +292,12 @@ class TravelRecommendationSystem:
     
 @app.route('/')
 def home():
-    return "Hello! Your Flask app is working 🚀"
+    return "Hello! Your Flask app is running 🚀"
 
 if __name__ == '__main__':
-    app.run()
+    # For local dev fallback: use PORT env var if set, otherwise 5000
+    port = int(os.environ.get('PORT', 5000))
+    app.run(host='0.0.0.0', port=port)
 
 # Initialize the recommendation system
 recommendation_system = TravelRecommendationSystem()
